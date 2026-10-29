@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aarav Football Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>⚽ Aarav's Football Game</h1>
+  <p class="instructions">Press the <strong>SPACE</strong> key to kick!</p>
+  <button id="musicButton" class="music-button" type="button">▶ Play Background Music</button>
+
+  <!-- Put your own music file named football-music.mp3 in this same folder. -->
+  <audio id="backgroundMusic" loop preload="auto">
+    <source src="football-music.mp3" type="audio/mpeg">
+    Your browser does not support audio playback.
+  </audio>
+
+  <main class="field">
+    <div class="goal">
+      <div class="net"></div>
+      <div class="goal-post left-post"></div>
+      <div class="goal-post right-post"></div>
+      <div class="goal-post top-post"></div>
+    </div>
+    <div id="ball" class="ball">
+      <div class="ball-pattern pattern-one"></div>
+      <div class="ball-pattern pattern-two"></div>
+      <div class="ball-pattern pattern-three"></div>
+    </div>
+    <div id="message" class="message">Press SPACE to kick! ⚽</div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

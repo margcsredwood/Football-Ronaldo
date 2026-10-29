@@ -1,0 +1,63 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; font-family: Arial, Helvetica, sans-serif;
+  background: #8edb7b; display: flex; flex-direction: column;
+  align-items: center; overflow: hidden; color: #173b20;
+}
+h1 { margin: 18px 10px 5px; font-size: clamp(28px, 5vw, 48px); text-align: center; }
+.instructions { margin: 0 10px 10px; font-size: clamp(16px, 3vw, 21px); text-align: center; }
+.music-button {
+  margin: 0 10px 12px; padding: 10px 18px; border: 2px solid #173b20;
+  border-radius: 24px; background: #fff; color: #173b20; font-size: 15px;
+  font-weight: bold; cursor: pointer;
+}
+.music-button:hover { background: #f0ffe9; }
+.field {
+  position: relative; width: min(900px, 94vw); height: min(600px, 72vh); min-height: 420px;
+  background: repeating-linear-gradient(90deg, #55b95a 0 70px, #4eaf53 70px 140px);
+  border: 8px solid white; border-radius: 18px; overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+.goal { position: absolute; top: 35px; left: 50%; transform: translateX(-50%); width: 250px; height: 150px; }
+.net {
+  position: absolute; inset: 12px 12px 0;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,.55) 0 2px, transparent 2px 15px),
+              repeating-linear-gradient(90deg, rgba(255,255,255,.55) 0 2px, transparent 2px 15px);
+  border: 3px solid white;
+}
+.goal-post { position: absolute; background: white; border-radius: 5px; z-index: 2; }
+.left-post { width: 12px; height: 150px; left: 0; top: 0; }
+.right-post { width: 12px; height: 150px; right: 0; top: 0; }
+.top-post { height: 12px; width: 250px; left: 0; top: 0; }
+.ball {
+  position: absolute; width: 78px; height: 78px; left: 50%; bottom: 45px; transform: translateX(-50%);
+  background: white; border: 4px solid #222; border-radius: 50%;
+  box-shadow: inset -10px -8px 0 rgba(0,0,0,.08), 0 7px 8px rgba(0,0,0,.25); z-index: 5;
+}
+.ball-pattern { position: absolute; background: #111; }
+.pattern-one { width: 25px; height: 25px; left: 25px; top: 23px; clip-path: polygon(50% 0%,100% 35%,80% 100%,20% 100%,0% 35%); }
+.pattern-two { width: 22px; height: 22px; left: 4px; top: 12px; border-radius: 40%; transform: rotate(-25deg); }
+.pattern-three { width: 22px; height: 22px; right: 4px; bottom: 12px; border-radius: 40%; transform: rotate(25deg); }
+.message {
+  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); width: max-content; max-width: 90%;
+  padding: 8px 16px; background: rgba(255,255,255,.92); border-radius: 20px;
+  font-size: 17px; font-weight: bold; text-align: center; z-index: 10;
+}
+.ball.kick { transition: left .65s ease-out, bottom .65s ease-out, transform .65s ease-out; transform: translateX(-50%) rotate(720deg); }
+.goal-scored { animation: goalFlash .7s ease; }
+@keyframes goalFlash {
+  0% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+  50% { box-shadow: 0 0 35px 15px white; }
+  100% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+}
+@media (max-width: 600px) {
+  h1 { margin-top: 10px; }
+  .field { height: 65vh; min-height: 360px; border-width: 5px; }
+  .goal { width: 190px; height: 115px; }
+  .left-post, .right-post { height: 115px; }
+  .top-post { width: 190px; }
+  .ball { width: 65px; height: 65px; }
+  .pattern-one { width: 21px; height: 21px; left: 20px; top: 19px; }
+  .pattern-two, .pattern-three { width: 18px; height: 18px; }
+  .message { font-size: 14px; padding: 7px 12px; }
+}
